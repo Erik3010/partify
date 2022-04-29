@@ -36,7 +36,9 @@ class Particle {
   }
   generate() {
     const element = document.createElement("span");
-    element.classList.add("particle");
+    element.style.position = "absolute";
+    element.style.pointerEvents = "none";
+    element.style.userSelect = "none";
     element.innerHTML = this.content;
 
     this.element = element;

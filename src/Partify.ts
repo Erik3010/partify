@@ -38,6 +38,8 @@ class Partify {
   init() {
     console.log("🌟 Newtron initialized!");
 
+    this.container.style.position = "relative";
+
     this.bindEventHandler();
     this.animate();
   }
