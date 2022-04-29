@@ -1,0 +1,20 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#container {
+  display: flex;
+  height: 100vh;
+  background: #e6e6e6;
+  position: relative;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  /* transition: .3s ease; */
+  pointer-events: none;
+  user-select: none;
+}
