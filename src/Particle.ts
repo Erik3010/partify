@@ -58,36 +58,3 @@ class Particle {
 }
 
 export default Particle;
-
-// class Particle {
-//   constructor({ element, y, x, direction, velocity, angle, spinSpeed }) {
-//     this.availableSizes = [15, 20, 25, 35, 45];
-
-//     this.container = container;
-//     this.size =
-//       this.availableSizes[
-//         Math.floor(Math.random() * this.availableSizes.length)
-//       ];
-
-//     this.y = y - this.size / 2;
-//     this.x = x - this.size / 2;
-//     this.direction = direction;
-//     this.velocity = velocity;
-//     this.angle = angle;
-//     this.spinSpeed = spinSpeed;
-
-//     this.element = element;
-//   }
-//   update() {
-//     this.y -= this.velocity.y;
-//     this.x -= this.velocity.x * this.direction;
-
-//     this.angle += this.spinSpeed;
-//     this.velocity.y = Math.min(this.size, this.velocity.y - 1);
-
-//     this.element.style.fontSize = `${this.size}px`;
-//     this.element.style.top = `${this.y}px`;
-//     this.element.style.left = `${this.x}px`;
-//     this.element.style.transform = `rotate(${this.angle}deg)`;
-//   }
-// }
