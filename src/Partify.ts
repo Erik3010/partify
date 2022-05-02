@@ -8,8 +8,8 @@ import { random } from "./Utility";
 class Partify {
   defaultOptions: PartifyOptions = {
     limit: 35,
-    velocityX: [0, 15],
-    velocityY: [0, 20],
+    velocityX: [0, 10],
+    velocityY: [0, 30],
   };
 
   selector: string;
@@ -93,7 +93,11 @@ class Partify {
     }
 
     this.particles.forEach((particle, index) => {
-      if (particle.y >= this.container.clientHeight) {
+      if (
+        particle.y >= this.container.clientHeight ||
+        particle.x >= this.container.clientWidth ||
+        particle.x + particle.element!.clientWidth < 0
+      ) {
         particle.element!.remove();
         this.particles.splice(index, 1);
       } else {
