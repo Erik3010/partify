@@ -8,4 +8,5 @@ export interface ParticleArguments {
   spinSpeed: number;
   velocity: Coordinate;
   content: string;
+  fadeOutAnimation: boolean;
 }

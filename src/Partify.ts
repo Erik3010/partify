@@ -10,6 +10,7 @@ class Partify {
     limit: 35,
     velocityX: [0, 10],
     velocityY: [0, 30],
+    fadeOutAnimation: false,
   };
 
   selector: string;
@@ -79,6 +80,7 @@ class Partify {
       angle: random(0, 360),
       spinSpeed: random(0, 35) * direction,
       content: this.content,
+      fadeOutAnimation: this.options.fadeOutAnimation!,
       velocity: {
         y: random(minVelocityY, maxVelocityY),
         x: random(minVelocityX, maxVelocityX),

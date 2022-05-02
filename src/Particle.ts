@@ -16,6 +16,9 @@ class Particle {
   spinSpeed: number;
   velocity: Coordinate;
 
+  opacity: number;
+  fadeOutAnimation: boolean;
+
   constructor({
     y,
     x,
@@ -24,6 +27,7 @@ class Particle {
     spinSpeed,
     velocity,
     content,
+    fadeOutAnimation,
   }: ParticleArguments) {
     this.content = content;
 
@@ -33,6 +37,9 @@ class Particle {
     this.angle = angle;
     this.spinSpeed = spinSpeed;
     this.velocity = velocity;
+
+    this.opacity = 1;
+    this.fadeOutAnimation = fadeOutAnimation;
   }
   generate() {
     const element = document.createElement("span");
@@ -46,16 +53,23 @@ class Particle {
     return this.element;
   }
   update() {
+    const element = this.element!;
+
     this.y -= this.velocity.y;
     this.x -= this.velocity.x * this.direction;
 
     this.angle += this.spinSpeed;
     this.velocity.y = Math.min(this.size, this.velocity.y - 1);
 
-    this.element!.style.fontSize = `${this.size}px`;
-    this.element!.style.top = `${this.y}px`;
-    this.element!.style.left = `${this.x}px`;
-    this.element!.style.transform = `rotate(${this.angle}deg)`;
+    element.style.fontSize = `${this.size}px`;
+    element.style.top = `${this.y}px`;
+    element.style.left = `${this.x}px`;
+    element.style.transform = `rotate(${this.angle}deg)`;
+
+    if (this.fadeOutAnimation) {
+      element.style.opacity = `${this.opacity * 100}`;
+      this.opacity -= this.opacity * 0.1;
+    }
   }
 }
 
