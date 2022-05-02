@@ -15,7 +15,10 @@
 
 <script src="../../dist/partify.js"></script>
 <script>
-    const partify = new Partify("#container", "⭐")
+    const partify = new Partify("#container", "⭐", {
+        velocityX: [0, 15],
+        velocityY: [0, 20]
+    })
     partify.init()
 </script>
 

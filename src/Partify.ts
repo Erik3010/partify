@@ -3,12 +3,13 @@ import { Coordinate } from "./interfaces/Coordinate";
 import { EventHandler } from "./types/EventHandler";
 
 import Particle from "./Particle";
-import { debounce, random } from "./Utility";
+import { random } from "./Utility";
 
 class Partify {
   defaultOptions: PartifyOptions = {
-    limit: 15,
-    maxLimit: 100,
+    limit: 35,
+    velocityX: [0, 15],
+    velocityY: [0, 20],
   };
 
   selector: string;
@@ -59,16 +60,17 @@ class Partify {
     this.isAddParticle = false;
   }
   generateParticles() {
-    for (let i = 0; i < this.options.limit!; i++) {
-      const particle = this.createParticle();
-      this.container.appendChild(particle.generate());
+    const particle = this.createParticle();
+    this.container.appendChild(particle.generate());
 
-      this.particles.push(particle);
-    }
+    this.particles.push(particle);
   }
   createParticle() {
     const { y, x } = this.coordinate!;
     const direction = Math.random() < 0.5 ? -1 : 1;
+
+    const [minVelocityX, maxVelocityX] = this.options.velocityX!;
+    const [minVelocityY, maxVelocityY] = this.options.velocityY!;
 
     return new Particle({
       y,
@@ -78,15 +80,15 @@ class Partify {
       spinSpeed: random(0, 35) * direction,
       content: this.content,
       velocity: {
-        y: random(0, 10),
-        x: random(0, 25),
+        y: random(minVelocityY, maxVelocityY),
+        x: random(minVelocityX, maxVelocityX),
       },
     });
   }
   animate() {
     requestAnimationFrame(this.animate.bind(this));
 
-    if (this.isAddParticle && this.particles.length < this.options.maxLimit!) {
+    if (this.isAddParticle && this.particles.length < this.options.limit!) {
       this.generateParticles();
     }
 

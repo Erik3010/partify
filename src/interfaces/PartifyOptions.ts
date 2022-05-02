@@ -1,4 +1,5 @@
 export interface PartifyOptions {
   limit?: number;
-  maxLimit?: number;
+  velocityX?: [number, number];
+  velocityY?: [number, number];
 }
