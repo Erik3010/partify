@@ -28,4 +28,4 @@ partify.init();
 
 ## References
 
-Inspired by [rainbow.me](https://rainbow.me/)
+Inspired from [rainbow.me](https://rainbow.me/)
